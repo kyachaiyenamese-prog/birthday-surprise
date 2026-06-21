@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday, My Love ✨</title>
+  <meta name="description" content="A romantic birthday surprise page with a cake, love letter, sweet memories, mini games, promises, and magical interactions." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fff8fb;
+      --bg-soft: #fff0f6;
+      --panel: rgba(255, 255, 255, 0.72);
+      --panel-strong: rgba(255, 255, 255, 0.9);
+      --text: #53152f;
+      --muted: #8d5970;
+      --line: rgba(164, 47, 104, 0.14);
+      --accent: #e5458f;
+      --accent-2: #ff7db4;
+      --accent-deep: #a42f68;
+      --gold: #f0bf67;
+      --shadow: 0 24px 60px rgba(164, 47, 104, 0.12);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 15%, rgba(255, 183, 213, 0.35), transparent 22rem),
+        radial-gradient(circle at 88% 10%, rgba(240, 191, 103, 0.18), transparent 18rem),
+        radial-gradient(circle at 50% 82%, rgba(229, 69, 143, 0.16), transparent 24rem),
+        linear-gradient(180deg, #fff9fc 0%, #fff0f6 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.05;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.8) 0.5px, transparent 0.7px);
+      background-size: 11px 11px;
+      z-index: 0;
+    }
+
+    .fx-layer {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .heart-float, .sparkle {
+      position: absolute;
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+
+    .heart-float {
+      bottom: -10vh;
+      color: var(--accent);
+      filter: drop-shadow(0 10px 14px rgba(229, 69, 143, 0.25));
+      animation: heartRise linear forwards;
+    }
+
+    .sparkle {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(255,255,255,0.95), rgba(240,191,103,0.7));
+      box-shadow: 0 0 18px rgba(240,191,103,0.45);
+      animation: sparkleFade linear forwards;
+    }
+
+    @keyframes heartRise {
+      0%   { transform: translateY(0) scale(0.7) rotate(0deg); opacity: 0; }
+      15%  { opacity: 1; }
+      100% { transform: translateY(-120vh) scale(1.15) rotate(18deg); opacity: 0; }
+    }
+
+    @keyframes sparkleFade {
+      0%   { transform: translateY(0) scale(0.4); opacity: 0; }
+      25%  { opacity: 1; }
+      100% { transform: translateY(-80px) scale(1.35); opacity: 0; }
+    }
+
+    .page {
+      position: relative;
+      z-index: 2;
+      width: min(var(--max), calc(100% - 28px));
+      margin: 0 auto;
+      padding: 20px 0 56px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.6);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      padding: clamp(28px, 5vw, 56px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 560px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      color: var(--accent-deep);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      margin-top: 18px;
+      font-size: clamp(3.5rem, 9vw, 7.5rem);
+      color: var(--accent-deep);
+    }
+
+    .lead {
+      max-width: 56ch;
+      margin: 22px 0 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: clamp(1.02rem, 1.7vw, 1.2rem);
+    }
+
+    .hero-actions, .inline-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font: inherit;
+      font-weight: 800;
+      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, color 0.22s ease;
+    }
+
+    .btn:active { transform: translateY(1px) scale(0.98); }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 18px 34px rgba(229, 69, 143, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 22px 38px rgba(229, 69, 143, 0.34);
+    }
+
+    .btn-soft {
+      background: rgba(255,255,255,0.82);
+      color: var(--accent-deep);
+      border: 1px solid var(--line);
+    }
+
+    .btn-soft:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.96);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #f3c874, #f0bf67);
+      color: #5a3900;
+      box-shadow: 0 16px 30px rgba(240, 191, 103, 0.24);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .mini-note {
+      margin-top: 18px;
+      width: fit-content;
+      max-width: 30rem;
+      padding: 12px 14px;
+      background: var(--panel-strong);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .hero-visual {
+      min-height: 560px;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      position: relative;
+      background:
+        radial-gradient(circle at 82% 15%, rgba(255, 206, 228, 0.8), transparent 22%),
+        radial-gradient(circle at 20% 85%, rgba(240,191,103,0.18), transparent 20%);
+    }
+
+    .cake-stage {
+      width: min(100%, 390px);
+      aspect-ratio: 1 / 1;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .cake-wrap {
+      width: 300px;
+      height: 320px;
+      position: relative;
+      animation: pulseSoft 4s ease-in-out infinite;
+    }
+
+    @keyframes pulseSoft {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    .cake-shadow {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 26px;
+      height: 34px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(164,47,104,0.18), transparent 65%);
+      filter: blur(10px);
+    }
+
+    .cake-top {
+      position: absolute;
+      top: 78px;
+      left: 42px;
+      width: 216px;
+      height: 62px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #ffdceb, #ffbfd9);
+      z-index: 2;
+      box-shadow: inset 0 -9px 0 rgba(255,255,255,0.28);
+    }
+
+    .icing {
+      position: absolute;
+      top: 108px;
+      left: 30px;
+      width: 240px;
+      height: 34px;
+      z-index: 3;
+      border-radius: 16px 16px 20px 20px;
+      background:
+        radial-gradient(circle at 10% 100%, #fff 0 18px, transparent 19px),
+        radial-gradient(circle at 28% 100%, #fff 0 14px, transparent 15px),
+        radial-gradient(circle at 46% 100%, #fff 0 18px, transparent 19px),
+        radial-gradient(circle at 64% 100%, #fff 0 14px, transparent 15px),
+        radial-gradient(circle at 82% 100%, #fff 0 18px, transparent 19px),
+        linear-gradient(180deg, #fff, #fff2f7);
+    }
+
+    .cake-body {
+      position: absolute;
+      top: 110px;
+      left: 30px;
+      width: 240px;
+      height: 132px;
+      border-radius: 26px 26px 34px 34px;
+      background: linear-gradient(180deg, #ff98c1, #ff77b0);
+      box-shadow: inset 0 -11px 0 rgba(255,255,255,0.22), 0 18px 32px rgba(164,47,104,0.12);
+    }
+
+    .cake-ribbon {
+      position: absolute;
+      top: 162px;
+      left: 30px;
+      width: 240px;
+      height: 12px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.25), rgba(255,255,255,0.55), rgba(255,255,255,0.25));
+      z-index: 4;
+    }
+
+    .plate {
+      position: absolute;
+      bottom: 34px;
+      left: 14px;
+      width: 272px;
+      height: 34px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #fff, #ffe7f0);
+      box-shadow: 0 10px 20px rgba(164,47,104,0.1);
+    }
+
+    .candles {
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 24px;
+      z-index: 5;
+    }
+
+    .candle {
+      position: relative;
+      width: 16px;
+      height: 68px;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #ffe170 0 35%, #fff1a8 35% 65%, #ffd54c 65% 100%);
+      box-shadow: inset -4px 0 0 rgba(255,255,255,0.25);
+      transition: transform 0.2s ease, filter 0.2s ease, opacity 0.2s ease;
+    }
+
+    .candle:hover {
+      transform: translateY(-3px) rotate(-2deg);
+      filter: saturate(1.06);
+    }
+
+    .candle::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: -17px;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 22px;
+      border-radius: 50% 50% 58% 58%;
+      background: radial-gradient(circle at 50% 28%, #fff8cf 0 18%, #ffbe00 52%, #ff6f00 86%);
+      box-shadow: 0 0 18px rgba(255, 184, 0, 0.52);
+      animation: flicker 0.18s infinite alternate;
+    }
+
+    .candle.blown {
+      background: linear-gradient(180deg, #b8b3ab, #9f998f);
+    }
+
+    .candle.blown::before {
+      content: "💨";
+      top: -18px;
+      width: auto;
+      height: auto;
+      background: none;
+      box-shadow: none;
+      animation: none;
+      font-size: 18px;
+    }
+
+    @keyframes flicker {
+      from { transform: translateX(-50%) scale(1) rotate(-2deg); }
+      to { transform: translateX(-50%) scale(1.05) rotate(2deg); }
+    }
+
+    .wish-chip {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      max-width: 220px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.84);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+
+    .grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+    }
+
+    .stack {
+      display: grid;
+      gap: 22px;
+    }
+
+    .section {
+      padding: clamp(22px, 3vw, 34px);
+    }
+
+    .section h2 {
+      font-size: clamp(2rem, 5vw, 3.3rem);
+      color: var(--accent-deep);
+      margin-bottom: 10px;
+    }
+
+    .section-intro {
+      max-width: 60ch;
+      margin: 0 0 20px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .reason {
+      padding: 18px 16px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      min-height: 118px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .reason strong {
+      color: var(--accent-deep);
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .reason span {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.95rem;
+    }
+
+    .song-frame {
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.4);
+    }
+
+    .letter-paper {
+      position: relative;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,247,251,0.96));
+      border: 1px solid rgba(164,47,104,0.11);
+      padding: 24px;
+      min-height: 240px;
+    }
+
+    .letter-paper::before {
+      content: "💌";
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      font-size: 1.35rem;
+      opacity: 0.58;
+    }
+
+    #typedMessage {
+      white-space: pre-wrap;
+      line-height: 1.9;
+      font-size: 1.04rem;
+      min-height: 190px;
+    }
+
+    .promise-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .promise {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid var(--line);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .promise strong {
+      display: block;
+      color: var(--accent-deep);
+      margin-bottom: 4px;
+    }
+
+    .memory-gallery {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 14px;
+      min-height: 360px;
+    }
+
+    .memory-panel {
+      position: relative;
+      min-height: 180px;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(164,47,104,0.12);
+      background: linear-gradient(135deg, rgba(255,255,255,0.86), rgba(255,241,247,0.92));
+    }
+
+    .memory-panel.tall { min-height: 360px; }
+
+    .art {
+      position: absolute;
+      inset: 0;
+    }
+
+    .art.one {
+      background:
+        radial-gradient(circle at 22% 20%, rgba(255,255,255,0.9), transparent 20%),
+        radial-gradient(circle at 78% 18%, rgba(255,189,218,0.78), transparent 20%),
+        radial-gradient(circle at 65% 76%, rgba(240,191,103,0.2), transparent 18%),
+        linear-gradient(135deg, #ffc7de, #ffe3ee 42%, #fff9fc);
+    }
+
+    .art.two {
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,0.82), transparent 18%),
+        linear-gradient(135deg, #ffd9e8, #fff0f6);
+    }
+
+    .art.three {
+      background:
+        radial-gradient(circle at 74% 22%, rgba(255,255,255,0.84), transparent 18%),
+        linear-gradient(135deg, #ffbfd9, #ffe7f1);
+    }
+
+    .memory-caption {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(164,47,104,0.12);
+      backdrop-filter: blur(10px);
+    }
+
+    .memory-caption strong {
+      display: block;
+      color: var(--accent-deep);
+      margin-bottom: 4px;
+    }
+
+    .memory-caption span {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.94rem;
+    }
+
+    .mini-col {
+      display: grid;
+      gap: 14px;
+    }
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(64px, 1fr));
+      gap: 12px;
+    }
+
+    .memory-card {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: transparent;
+      padding: 0;
+      border-radius: 18px;
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+      perspective: 1000px;
+      transition: transform 0.2s ease;
+    }
+
+    .memory-card:hover { transform: translateY(-2px); }
+    .memory-card[disabled] { cursor: default; opacity: 0.95; }
+
+    .memory-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.5s ease;
+    }
+
+    .memory-card.flipped .memory-inner,
+    .memory-card.matched .memory-inner {
+      transform: rotateY(180deg);
+    }
+
+    .memory-face {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      backface-visibility: hidden;
+      border-radius: 18px;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .memory-front {
+      color: #fff;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255,255,255,0.85), transparent 24%),
+        linear-gradient(135deg, #ffd1e5, #ff9cc5);
+      box-shadow: inset 0 -10px 20px rgba(255,255,255,0.16);
+    }
+
+    .memory-back {
+      transform: rotateY(180deg);
+      color: var(--accent-deep);
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,245,249,0.96));
+      border: 1px solid rgba(164,47,104,0.08);
+    }
+
+    .status {
+      margin-top: 14px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .ttt-board {
+      width: min(100%, 360px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .ttt-cell {
+      border: none;
+      aspect-ratio: 1 / 1;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,245,249,0.96));
+      color: var(--accent-deep);
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.1rem, 8vw, 3.1rem);
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: inset 0 0 0 1px rgba(164,47,104,0.12);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .ttt-cell:hover {
+      transform: translateY(-2px);
+      box-shadow: inset 0 0 0 1px rgba(164,47,104,0.18), 0 10px 22px rgba(164,47,104,0.08);
+    }
+
+    .surprise-envelope {
+      margin-top: 14px;
+      position: relative;
+      min-height: 280px;
+      display: grid;
+      place-items: center;
+    }
+
+    .envelope {
+      position: relative;
+      width: min(100%, 380px);
+      height: 240px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, #fff, #ffeef5);
+      border: 1px solid rgba(164,47,104,0.12);
+      box-shadow: 0 20px 40px rgba(164,47,104,0.1);
+      overflow: hidden;
+    }
+
+    .envelope::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      clip-path: polygon(0 0, 50% 52%, 100% 0);
+      background: linear-gradient(180deg, #ffd4e5, #ffc2dc);
+      z-index: 2;
+      transform-origin: top;
+      transition: transform 0.7s ease;
+    }
+
+    .envelope.open::before {
+      transform: rotateX(180deg);
+    }
+
+    .envelope-pocket {
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 100%;
+      clip-path: polygon(0 100%, 0 25%, 50% 62%, 100% 25%, 100% 100%);
+      background: linear-gradient(180deg, #ffe4ee, #ffd0e2);
+      z-index: 3;
+    }
+
+    .secret-card {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      top: 30px;
+      min-height: 170px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fff, #fff8fb);
+      border: 1px solid rgba(164,47,104,0.1);
+      padding: 18px;
+      z-index: 1;
+      transition: transform 0.7s ease;
+      transform: translateY(65px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .envelope.open .secret-card {
+      transform: translateY(-6px);
+    }
+
+    .secret-card strong {
+      display: block;
+      color: var(--accent-deep);
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .wish-jar {
+      display: grid;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .wish-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid var(--line);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .wish-item strong {
+      color: var(--accent-deep);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .footer {
+      margin-top: 24px;
+      padding: 12px 8px 8px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero, .grid { grid-template-columns: 1fr; }
+      .hero { min-height: auto; }
+      .hero-copy, .hero-visual { min-height: auto; }
+    }
+
+    @media (max-width: 680px) {
+      .page { width: min(100% - 16px, var(--max)); }
+      .reasons-grid { grid-template-columns: 1fr; }
+      .memory-gallery { grid-template-columns: 1fr; }
+      .wish-chip { position: static; margin-top: 18px; max-width: none; }
+      .cake-wrap { transform: scale(0.9); }
+    }
+  </style>
+</head>
+<body>
+  <div class="fx-layer" id="fxLayer" aria-hidden="true"></div>
+
+  <main class="page">
+    <section class="hero">
+      <div class="panel hero-copy reveal">
+        <div class="eyebrow">A little universe made for you</div>
+        <h1>Happy Birthday,<br />My Love</h1>
+        <p class="lead">
+          Today is about celebrating you — your warmth, your heart, your laugh, and the beautiful way you make love feel easy.
+          So instead of a countdown, I turned that space into something softer: a collection of little reasons why you mean so much to me.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="startExperienceBtn">Start the surprise</button>
+          <button class="btn btn-soft" id="openLetterBtn">Open the love letter</button>
+          <button class="btn btn-gold" id="micBtn">Blow the candles 🎤</button>
+        </div>
+
+        <div class="mini-note" id="micStatus">
+          Tap the candles to blow them out, or try microphone mode if your browser allows it.
+        </div>
+      </div>
+
+      <div class="panel hero-visual reveal">
+        <div class="cake-stage" aria-label="Birthday cake with candles">
+          <div class="cake-wrap">
+            <div class="candles" id="candles">
+              <button class="candle" aria-label="Blow out candle 1"></button>
+              <button class="candle" aria-label="Blow out candle 2"></button>
+              <button class="candle" aria-label="Blow out candle 3"></button>
+            </div>
+            <div class="cake-top"></div>
+            <div class="icing"></div>
+            <div class="cake-body"></div>
+            <div class="cake-ribbon"></div>
+            <div class="plate"></div>
+            <div class="cake-shadow"></div>
+          </div>
+        </div>
+        <div class="wish-chip" id="wishChip">
+          Make a wish, blow the candles, and let the page celebrate you back ✨
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="stack">
+        <article class="panel section reveal">
+          <h2>Why I Love You</h2>
+          <p class="section-intro">
+            Not because of one big thing. Because of a hundred little things that keep making my heart choose you.
+          </p>
+
+          <div class="reasons-grid" id="reasonsGrid">
+            <div class="reason">
+              <strong>Your smile</strong>
+              <span>It has a way of turning even the most ordinary moment into something worth remembering.</span>
+            </div>
+            <div class="reason">
+              <strong>Your heart</strong>
+              <span>You love with softness, honesty, and care — and that changes everything around you.</span>
+            </div>
+            <div class="reason">
+              <strong>Your laugh</strong>
+              <span>It’s one of my favorite sounds in the world, and I could listen to it forever.</span>
+            </div>
+            <div class="reason">
+              <strong>The way you are you</strong>
+              <span>Gentle, beautiful, strong, real — I love you in all the ways that make you completely yourself.</span>
+            </div>
+          </div>
+
+          <div class="inline-actions">
+            <button class="btn btn-soft" id="shuffleReasonsBtn">Show me more reasons</button>
+          </div>
+        </article>
+
+        <article class="panel section reveal">
+          <h2>Our Song</h2>
+          <p class="section-intro">
+            A soundtrack for this little love-soaked corner of the internet.
+          </p>
+
+          <div class="song-frame">
+            <iframe
+              title="Spotify song"
+              width="100%"
+              height="152"
+              style="border:0;"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              src="https://open.spotify.com/embed/track/0tgVpDi06FyKpA1z0VMD4v?utm_source=generator">
+            </iframe>
+          </div>
+        </article>
+
+        <article class="panel section reveal">
+          <h2>My Love Letter</h2>
+          <p class="section-intro">
+            A message written for the person who makes ordinary days feel beautiful.
+          </p>
+
+          <div class="letter-paper">
+            <p id="typedMessage" aria-live="polite"></p>
+          </div>
+
+          <div class="inline-actions">
+            <button class="btn btn-primary" id="typeLetterBtn">Type the letter</button>
+            <button class="btn btn-soft" id="finishLetterBtn">Show instantly</button>
+          </div>
+        </article>
+
+        <article class="panel section reveal">
+          <h2>Little Promises</h2>
+          <p class="section-intro">
+            Not big dramatic speeches — just the kind of love that shows up, stays warm, and chooses you again and again.
+          </p>
+
+          <div class="promise-list">
+            <div class="promise">
+              <strong>I promise</strong>
+              to keep finding new ways to make you smile, even on quiet days.
+            </div>
+            <div class="promise">
+              <strong>I promise</strong>
+              to celebrate your wins, hold your hand through hard moments, and love you gently through both.
+            </div>
+            <div class="promise">
+              <strong>I promise</strong>
+              to keep making memories with you that someday we'll call our favorite days.
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="stack">
+        <article class="panel section reveal">
+          <h2>Our Memories</h2>
+          <p class="section-intro">
+            Soft little scenes for the moments that matter most — the feeling of us, the comfort of you, the joy of together.
+          </p>
+
+          <div class="memory-gallery">
+            <div class="memory-panel tall">
+              <div class="art one"></div>
+              <div class="memory-caption">
+                <strong>The calm in your presence</strong>
+                <span>You somehow make everything feel softer, safer, and more beautiful.</span>
+              </div>
+            </div>
+            <div class="mini-col">
+              <div class="memory-panel">
+                <div class="art two"></div>
+                <div class="memory-caption">
+                  <strong>Your smile</strong>
+                  <span>Still my favorite reason for a better day.</span>
+                </div>
+              </div>
+              <div class="memory-panel">
+                <div class="art three"></div>
+                <div class="memory-caption">
+                  <strong>Us</strong>
+                  <span>The little moments with you become the big memories I keep.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel section reveal">
+          <h2>Memory Match</h2>
+          <p class="section-intro">
+            Flip the tiles and find all the pairs. Tiny game, big affection.
+          </p>
+
+          <div class="memory-grid" id="memoryGrid" aria-label="Memory match game"></div>
+          <div class="status" id="memoryStatus">Matches found: 0 / 4</div>
+
+          <div class="inline-actions">
+            <button class="btn btn-soft" id="resetMemoryBtn">Shuffle again</button>
+          </div>
+        </article>
+
+        <article class="panel section reveal">
+          <h2>Tic-Tac-Toe, But Cute</h2>
+          <p class="section-intro">
+            A little game break in the middle of all the romance.
+          </p>
+
+          <div class="ttt-board" id="tttBoard" aria-label="Tic tac toe board"></div>
+          <div class="status" id="tttStatus">Current turn: X</div>
+
+          <div class="inline-actions">
+            <button class="btn btn-soft" id="resetTttBtn">Reset game</button>
+          </div>
+        </article>
+
+        <article class="panel section reveal">
+          <h2>One More Surprise</h2>
+          <p class="section-intro">
+            There’s one last message tucked away in this envelope. Open when ready.
+          </p>
+
+          <div class="surprise-envelope">
+            <div class="envelope" id="envelope">
+              <div class="secret-card">
+                <div>
+                  <strong>You are my favorite part of life.</strong>
+                  Loving you feels like home, like warmth, like peace. Happy Birthday, my love — I hope this year holds as much beauty as you bring into my world. ❤️
+                </div>
+              </div>
+              <div class="envelope-pocket"></div>
+            </div>
+          </div>
+
+          <div class="inline-actions">
+            <button class="btn btn-primary" id="openEnvelopeBtn">Open the envelope</button>
+          </div>
+        </article>
+
+        <article class="panel section reveal">
+          <h2>Birthday Wishes Jar</h2>
+          <p class="section-intro">
+            A few wishes I’m sending into this year for you.
+          </p>
+
+          <div class="wish-jar">
+            <div class="wish-item">
+              <strong>Wish one</strong>
+              May your days feel lighter, your laughter louder, and your heart deeply at peace.
+            </div>
+            <div class="wish-item">
+              <strong>Wish two</strong>
+              May you always know how loved, valued, admired, and cherished you are.
+            </div>
+            <div class="wish-item">
+              <strong>Wish three</strong>
+              May this year bring you beautiful surprises, brave new beginnings, and moments you never want to forget.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer reveal">
+      Made with love, intention, and a little too much affection for just one birthday page.
+    </footer>
+  </main>
+
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("visible");
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+    const fxLayer = document.getElementById("fxLayer");
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart-float";
+      heart.textContent = Math.random() > 0.5 ? "❤" : "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 18 + 16) + "px";
+      heart.style.animationDuration = (Math.random() * 2 + 5) + "s";
+      fxLayer.appendChild(heart);
+      setTimeout(() => heart.remove(), 7000);
+    }
+
+    function burstSparkles(x = window.innerWidth / 2, y = window.innerHeight / 2, count = 16) {
+      for (let i = 0; i < count; i++) {
+        const s = document.createElement("div");
+        s.className = "sparkle";
+        s.style.left = `${x + (Math.random() * 80 - 40)}px`;
+        s.style.top = `${y + (Math.random() * 60 - 30)}px`;
+        s.style.animationDuration = (Math.random() * 0.6 + 0.8) + "s";
+        fxLayer.appendChild(s);
+        setTimeout(() => s.remove(), 1600);
+      }
+    }
+
+    setInterval(createHeart, 550);
+
+    const startExperienceBtn = document.getElementById("startExperienceBtn");
+    startExperienceBtn.addEventListener("click", () => {
+      document.querySelector(".grid").scrollIntoView({ behavior: "smooth", block: "start" });
+      burstSparkles(window.innerWidth * 0.5, window.innerHeight * 0.35, 24);
+      startTypingOnce();
+    });
+
+    const message = `My dearest love,
+
+You make my world brighter in the quietest, truest ways. Your smile softens my hardest days, your kindness stays with me long after every conversation, and your heart is one of the most beautiful things I have ever known.
+
+On your birthday, I just want you to feel what you make others feel so naturally:
+loved,
+seen,
+celebrated,
+and deeply cherished.
+
+Thank you for being you — for your warmth, your laugh, your tenderness, your strength, and the thousand tiny ways you make life feel more meaningful.
+
+Happy Birthday, my forever favorite person. ❤️`;
+
+    const typedMessage = document.getElementById("typedMessage");
+    const typeLetterBtn = document.getElementById("typeLetterBtn");
+    const finishLetterBtn = document.getElementById("finishLetterBtn");
+    const openLetterBtn = document.getElementById("openLetterBtn");
+
+    let typeIndex = 0;
+    let typingStarted = false;
+    let typingTimer = null;
+
+    function typeWriter() {
+      if (typeIndex < message.length) {
+        typedMessage.textContent += message.charAt(typeIndex);
+        typeIndex++;
+        typingTimer = setTimeout(typeWriter, 26);
+      }
+    }
+
+    function startTypingOnce() {
+      if (typingStarted) return;
+      typingStarted = true;
+      typeWriter();
+      typedMessage.parentElement.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function showFullLetter() {
+      clearTimeout(typingTimer);
+      typedMessage.textContent = message;
+      typingStarted = true;
+    }
+
+    typeLetterBtn.addEventListener("click", startTypingOnce);
+    finishLetterBtn.addEventListener("click", showFullLetter);
+    openLetterBtn.addEventListener("click", startTypingOnce);
+
+    setTimeout(startTypingOnce, 1200);
+
+    const candles = [...document.querySelectorAll(".candle")];
+    const wishChip = document.getElementById("wishChip");
+    const micStatus = document.getElementById("micStatus");
+
+    function blowOut(candle) {
+      candle.classList.add("blown");
+      if (candles.every(c => c.classList.contains("blown"))) {
+        burstCelebrate();
+      }
+    }
+
+    function relightCandles() {
+      candles.forEach(c => c.classList.remove("blown"));
+      wishChip.textContent = "Candles glowing again for another wish ✨";
+    }
+
+    function burstCelebrate() {
+      wishChip.textContent = "Wish made. Birthday magic officially activated 💖";
+      for (let i = 0; i < 24; i++) {
+        setTimeout(() => {
+          createHeart();
+          burstSparkles(
+            window.innerWidth * (0.35 + Math.random() * 0.3),
+            window.innerHeight * (0.2 + Math.random() * 0.25),
+            5
+          );
+        }, i * 70);
+      }
+      setTimeout(relightCandles, 12000);
+    }
+
+    candles.forEach(candle => {
+      candle.addEventListener("click", (e) => {
+        blowOut(candle);
+        burstSparkles(e.clientX, e.clientY, 10);
+      });
+    });
+
+    let audioContext, analyser, micStream, sourceNode, micActive = false;
+    const micBtn = document.getElementById("micBtn");
+
+    async function startMic() {
+      if (micActive) return;
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        micStatus.textContent = "Microphone is not supported here. You can still tap the candles.";
+        return;
+      }
+
+      try {
+        audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        sourceNode = audioContext.createMediaStreamSource(micStream);
+        analyser = audioContext.createAnalyser();
+        analyser.fftSize = 512;
+        sourceNode.connect(analyser);
+        micActive = true;
+        micStatus.textContent = "Microphone active. Blow into the mic to blow out all the candles.";
+        detectBlow();
+      } catch (err) {
+        micStatus.textContent = "Mic access was denied or unavailable. Tap the candles instead.";
+      }
+    }
+
+    function detectBlow() {
+      if (!analyser || !micActive) return;
+      const data = new Uint8Array(analyser.fftSize);
+
+      function loop() {
+        if (!micActive) return;
+        analyser.getByteTimeDomainData(data);
+        let volume = 0;
+        for (let i = 0; i < data.length; i++) {
+          volume += Math.abs(data[i] - 128);
+        }
+
+        if (volume > 4200) {
+          candles.forEach(blowOut);
+          micStatus.textContent = "You blew out the candles! 💕";
+          micActive = false;
+          micStream.getTracks().forEach(track => track.stop());
+          return;
+        }
+        requestAnimationFrame(loop);
+      }
+
+      loop();
+    }
+
+    micBtn.addEventListener("click", startMic);
+
+    const romanticReasons = [
+      ["Your eyes", "They always feel like the safest place for my heart to land."],
+      ["Your kindness", "You care so deeply, and that softness is one of the most beautiful things about you."],
+      ["Your voice", "Even the simplest words sound special when they come from you."],
+      ["Your presence", "You make everything feel calmer, sweeter, and more like home."],
+      ["The way you love", "You love with honesty and warmth, and I treasure that more than I can say."],
+      ["Your little habits", "The tiny things you do without thinking are somehow the things I adore most."],
+      ["Your strength", "You carry so much with grace, and I admire you more than you know."],
+      ["The way you make me feel", "Loved, understood, lucky — all at once."]
+    ];
+
+    const reasonsGrid = document.getElementById("reasonsGrid");
+    const shuffleReasonsBtn = document.getElementById("shuffleReasonsBtn");
+
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function renderReasons() {
+      const selected = shuffleArray(romanticReasons).slice(0, 4);
+      reasonsGrid.innerHTML = selected.map(([title, text]) => `
+        <div class="reason">
+          <strong>${title}</strong>
+          <span>${text}</span>
+        </div>
+      `).join("");
+    }
+
+    shuffleReasonsBtn.addEventListener("click", () => {
+      renderReasons();
+      burstSparkles(window.innerWidth * 0.35, window.innerHeight * 0.42, 14);
+    });
+
+    renderReasons();
+
+    const memoryGrid = document.getElementById("memoryGrid");
+    const memoryStatus = document.getElementById("memoryStatus");
+    const resetMemoryBtn = document.getElementById("resetMemoryBtn");
+    const symbols = ["💌", "🌹", "🎂", "💍"];
+    let memoryCards = [];
+    let flipped = [];
+    let lockBoard = false;
+    let matches = 0;
+
+    function shuffle(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    function setupMemoryGame() {
+      matches = 0;
+      flipped = [];
+      lockBoard = false;
+      memoryStatus.textContent = "Matches found: 0 / 4";
+      memoryCards = shuffle([...symbols, ...symbols]).map((symbol, index) => ({
+        id: index,
+        symbol,
+        matched: false
+      }));
+      renderMemoryGame();
+    }
+
+    function renderMemoryGame() {
+      memoryGrid.innerHTML = "";
+      memoryCards.forEach(card => {
+        const btn = document.createElement("button");
+        btn.className = "memory-card";
+        btn.type = "button";
+        btn.dataset.id = card.id;
+
+        const isFlipped = flipped.includes(card.id);
+        if (isFlipped) btn.classList.add("flipped");
+        if (card.matched) {
+          btn.classList.add("matched");
+          btn.disabled = true;
+        }
+
+        btn.innerHTML = `
+          <span class="memory-inner">
+            <span class="memory-face memory-front">♡</span>
+            <span class="memory-face memory-back">${card.symbol}</span>
+          </span>
+        `;
+
+        btn.addEventListener("click", () => flipCard(card.id));
+        memoryGrid.appendChild(btn);
+      });
+    }
+
+    function flipCard(id) {
+      if (lockBoard) return;
+      const card = memoryCards.find(c => c.id === id);
+      if (!card || card.matched || flipped.includes(id)) return;
+
+      flipped.push(id);
+      renderMemoryGame();
+
+      if (flipped.length === 2) {
+        lockBoard = true;
+        const [firstId, secondId] = flipped;
+        const first = memoryCards.find(c => c.id === firstId);
+        const second = memoryCards.find(c => c.id === secondId);
+
+        if (first.symbol === second.symbol) {
+          setTimeout(() => {
+            first.matched = true;
+            second.matched = true;
+            matches++;
+            memoryStatus.textContent = `Matches found: ${matches} / 4`;
+            flipped = [];
+            lockBoard = false;
+            renderMemoryGame();
+
+            if (matches === 4) {
+              memoryStatus.textContent = "All matches found! You win 💖";
+              burstSparkles(window.innerWidth * 0.6, window.innerHeight * 0.5, 24);
+            }
+          }, 500);
+        } else {
+          setTimeout(() => {
+            flipped = [];
+            lockBoard = false;
+            renderMemoryGame();
+          }, 850);
+        }
+      }
+    }
+
+    resetMemoryBtn.addEventListener("click", setupMemoryGame);
+    setupMemoryGame();
+
+    const tttBoard = document.getElementById("tttBoard");
+    const tttStatus = document.getElementById("tttStatus");
+    const resetTttBtn = document.getElementById("resetTttBtn");
+    let board = Array(9).fill("");
+    let currentPlayer = "X";
+    let gameActive = true;
+
+    const wins = [
+      [0,1,2],[3,4,5],[6,7,8],
+      [0,3,6],[1,4,7],[2,5,8],
+      [0,4,8],[2,4,6]
+    ];
+
+    function renderBoard() {
+      tttBoard.innerHTML = "";
+      board.forEach((value, index) => {
+        const cell = document.createElement("button");
+        cell.className = "ttt-cell";
+        cell.type = "button";
+        cell.textContent = value;
+        cell.setAttribute("aria-label", `Cell ${index + 1}`);
+        cell.addEventListener("click", () => makeMove(index));
+        tttBoard.appendChild(cell);
+      });
+    }
+
+    function checkWinner() {
+      for (const [a, b, c] of wins) {
+        if (board[a] && board[a] === board[b] && board[b] === board[c]) {
+          return board[a];
+        }
+      }
+      return null;
+    }
+
+    function makeMove(index) {
+      if (!gameActive || board[index]) return;
+      board[index] = currentPlayer;
+      const winner = checkWinner();
+
+      if (winner) {
+        gameActive = false;
+        tttStatus.textContent = `${winner} wins! 💖`;
+        burstSparkles(window.innerWidth * 0.55, window.innerHeight * 0.55, 16);
+      } else if (board.every(Boolean)) {
+        gameActive = false;
+        tttStatus.textContent = `It's a draw — still adorable.`;
+      } else {
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
+        tttStatus.textContent = `Current turn: ${currentPlayer}`;
+      }
+
+      renderBoard();
+    }
+
+    function resetTtt() {
+      board = Array(9).fill("");
+      currentPlayer = "X";
+      gameActive = true;
+      tttStatus.textContent = "Current turn: X";
+      renderBoard();
+    }
+
+    resetTttBtn.addEventListener("click", resetTtt);
+    renderBoard();
+
+    const envelope = document.getElementById("envelope");
+    const openEnvelopeBtn = document.getElementById("openEnvelopeBtn");
+
+    function openEnvelope() {
+      envelope.classList.toggle("open");
+      burstSparkles(window.innerWidth * 0.68, window.innerHeight * 0.75, 18);
+    }
+
+    openEnvelopeBtn.addEventListener("click", openEnvelope);
+    envelope.addEventListener("click", openEnvelope);
+
+    document.addEventListener("click", (e) => {
+      if (e.target.closest("button")) return;
+      burstSparkles(e.clientX, e.clientY, 6);
+    });
+  </script>
+</body>
+</html>
